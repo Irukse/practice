@@ -29,12 +29,12 @@ public class Application {
 
 
     public static void main(String[] args) {
-        ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext(
-                "spring_mvc_config.xml");
-        context.getBean("testBean", Application.class);
+      //  ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext(
+       //         "spring_mvc_config.xml");
+      //  context.getBean("testBean", Application.class);
         System.out.println("hghi");
-        //     SpringApplication.run(Application.class, args);
-        context.close();
+        // //    SpringApplication.run(Application.class, args);
+      //  context.close();
     }
 
 
