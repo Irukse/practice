@@ -1,20 +1,20 @@
 CREATE TABLE IF NOT EXISTS Type_document (
    id        BIGINT        NOT NULL PRIMARY KEY AUTO_INCREMENT,
-   name      VARCHAR(10)   NOT NULL COMMENT 'Тип документа',
+   name_type VARCHAR(10)   NOT NULL COMMENT 'Тип документа',
    code      VARCHAR(2)    NOT NULL COMMENT 'Код документа',
    version   INTEGER       NOT NULL COMMENT 'Служебное поле Hibernate'
 );
 
 CREATE TABLE IF NOT EXISTS Country (
-    id        INTEGER       NOT NULL PRIMARY KEY AUTO_INCREMENT ,
-    name      VARCHAR(25)   NOT NULL COMMENT 'Название страны',
-    code      VARCHAR(3)    NOT NULL COMMENT 'Код страны',
-    version   INTEGER       NOT NULL COMMENT 'Служебное поле Hibernate'
+    id            INTEGER       NOT NULL PRIMARY KEY AUTO_INCREMENT ,
+    name_country  VARCHAR(25)   NOT NULL COMMENT 'Название страны',
+    code          VARCHAR(3)    NOT NULL COMMENT 'Код страны',
+    version       INTEGER       NOT NULL COMMENT 'Служебное поле Hibernate'
 );
 
 CREATE TABLE IF NOT EXISTS Organization (
     id          BIGINT        NOT NULL PRIMARY KEY AUTO_INCREMENT,
-    name        VARCHAR(50)   NOT NULL COMMENT 'Имя организации',
+    name_org    VARCHAR(50)   NOT NULL COMMENT 'Имя организации',
     full_name   VARCHAR(50)   NOT NULL  COMMENT 'Полное имя организации' ,
     inn         VARCHAR(10)   NOT NULL,
     kpp         VARCHAR(9)    NOT NULL,
@@ -25,14 +25,14 @@ CREATE TABLE IF NOT EXISTS Organization (
 );
 
 CREATE TABLE IF NOT EXISTS Office (
-    id        BIGINT        NOT NULL PRIMARY KEY AUTO_INCREMENT,
-    org_id    BIGINT        COMMENT 'Идентификатор связанный с идентификатором (id) в таблице организаций',
+    id           BIGINT        NOT NULL PRIMARY KEY AUTO_INCREMENT,
+    org_id       BIGINT        COMMENT 'Идентификатор связанный с идентификатором (id) в таблице организаций',
     FOREIGN KEY (org_id)    REFERENCES Organization (id),
-    name      VARCHAR(50)   NOT NULL   COMMENT 'Название офиса',
-    address   VARCHAR(50)   NOT NULL COMMENT 'Адрес офиса',
-    phone     VARCHAR(11)   COMMENT 'Телефонный номер офиса',
+    name_office  VARCHAR(50)   NOT NULL   COMMENT 'Название офиса',
+    address      VARCHAR(50)   NOT NULL COMMENT 'Адрес офиса',
+    phone        VARCHAR(11)   COMMENT 'Телефонный номер офиса',
     is_active BOOLEAN,
-    version   INTEGER       NOT NULL COMMENT 'Служебное поле Hibernate'
+    version      INTEGER       NOT NULL COMMENT 'Служебное поле Hibernate'
 );
 
 CREATE TABLE IF NOT EXISTS Employee (
