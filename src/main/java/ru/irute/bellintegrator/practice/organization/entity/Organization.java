@@ -8,7 +8,7 @@ import java.util.List;
 @Entity(name = "Organization")
 public class Organization {
     @Id
-    @GeneratedValue
+    @GeneratedValue (strategy = GenerationType.IDENTITY)
     private Long id;
 
     /**
@@ -58,10 +58,7 @@ public class Organization {
      */
     @Version
     private Integer version;
-/*
-    @OneToMany(mappedBy = "organization",cascade = CascadeType.ALL, orphanRemoval = true)
-    public List<Office> offices;
-*/
+
     /**
      *конструктор
      */
@@ -72,7 +69,7 @@ public class Organization {
     /**
      * добавим поле office
      */
-    @OneToMany(cascade = CascadeType.ALL)
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
     @JoinColumn(name = "id")
     private List <Office> offices;
 
@@ -154,5 +151,8 @@ public class Organization {
 
     public void setOffices(List<Office> offices) {
         this.offices = offices;
+    }
+
+    public void setIsActive(boolean b) {
     }
 }

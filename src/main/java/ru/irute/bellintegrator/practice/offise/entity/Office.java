@@ -5,7 +5,7 @@ import javax.persistence.*;
 @Entity(name = "Office")
 public class Office {
     @Id
-    @GeneratedValue
+    @GeneratedValue (strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private Long id;
 
