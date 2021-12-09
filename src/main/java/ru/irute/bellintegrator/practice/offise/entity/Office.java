@@ -39,13 +39,6 @@ public class Office {
     @Version
     private Integer version;
 
-    /**
-     *конструкторы
-     */
-    public Office() {
-
-    }
-
     public Long getId() {
         return id;
     }

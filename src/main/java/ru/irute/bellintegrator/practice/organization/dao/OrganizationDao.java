@@ -9,10 +9,12 @@ import java.util.List;
 
 @Repository
 public class OrganizationDao {
+
     private final EntityManager em;
 
     @Autowired
     public OrganizationDao(EntityManager em){ this.em = em;}
+
 
 
     public Organization getById(Long id){

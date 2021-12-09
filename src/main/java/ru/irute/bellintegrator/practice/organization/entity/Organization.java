@@ -1,5 +1,6 @@
 package ru.irute.bellintegrator.practice.organization.entity;
 
+import ma.glasnost.orika.MapperFacade;
 import ru.irute.bellintegrator.practice.offise.entity.Office;
 
 import javax.persistence.*;
@@ -155,4 +156,6 @@ public class Organization {
 
     public void setIsActive(boolean b) {
     }
+
+
 }
