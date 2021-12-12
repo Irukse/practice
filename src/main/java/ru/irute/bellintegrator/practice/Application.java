@@ -1,5 +1,6 @@
 package ru.irute.bellintegrator.practice;
 
+import org.modelmapper.ModelMapper;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
@@ -22,7 +23,10 @@ import static springfox.documentation.builders.PathSelectors.regex;
 
 @SpringBootApplication
 public class Application {
-
+@Bean
+    ModelMapper modelMapper(){
+    return new ModelMapper();
+}
     public static void main(String[] args) {
         SpringApplication.run(Application.class, args);
     }

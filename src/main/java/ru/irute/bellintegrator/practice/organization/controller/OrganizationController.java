@@ -13,7 +13,7 @@ import java.util.List;
 import static org.springframework.http.MediaType.APPLICATION_JSON_VALUE;
 
 @RestController
-@RequestMapping(value = "/api/organization", produces = APPLICATION_JSON_VALUE)
+@RequestMapping(value = "/", produces = APPLICATION_JSON_VALUE)
 public class OrganizationController {
     private final OrganizationService organizationService;
 
@@ -25,10 +25,11 @@ public class OrganizationController {
         List<OrganizationDto> orgAll= organizationService.listAll();
         return orgAll;
     }
-      @PostMapping("/save")
+    @PostMapping("/save")
     public boolean save(@RequestBody OrganizationDto organizationDto){
-      organizationService.save(organizationDto);
-      return true;
+        organizationService.save(organizationDto);
+        return true;
     }
+
 
 }

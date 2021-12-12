@@ -1,9 +1,10 @@
 package ru.irute.bellintegrator.practice.organization.dto;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
 import ru.irute.bellintegrator.practice.offise.entity.Office;
 
 import java.util.List;
-
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public class OrganizationDto {
     private Long id;
     private String name;
@@ -94,6 +95,10 @@ public class OrganizationDto {
 
     public void setPhone(String phone) {
         this.phone = phone;
+    }
+
+    public OrganizationDto() {
+
     }
 
 }
