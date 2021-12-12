@@ -157,5 +157,20 @@ public class Organization {
     public void setIsActive(boolean b) {
     }
 
-
+    public Organization(Long id, String name,
+                        String fullName, Integer inn,
+                        Integer kpp, String address,
+                        String phone, Boolean isActive,
+                        Integer version, List<Office> offices) {
+        this.id = id;
+        this.name = name;
+        this.fullName = fullName;
+        this.inn = inn;
+        this.kpp = kpp;
+        this.address = address;
+        this.phone = phone;
+        this.isActive = isActive;
+        this.version = version;
+        this.offices = offices;
+    }
 }

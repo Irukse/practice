@@ -3,15 +3,28 @@ package ru.irute.bellintegrator.practice.organization.dto;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import ru.irute.bellintegrator.practice.offise.entity.Office;
 
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 import java.util.List;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class OrganizationDto {
     private Long id;
+    @Size(max = 50)
+    @NotNull
     private String name;
+    @Size(max = 50)
+    @NotNull
     private String fullName;
+    @Size(max = 10)
+    @NotNull
     private Integer inn;
+    @Size(max = 9)
+    @NotNull
     private Integer kpp;
+    @Size(max = 50)
+    @NotNull
     private String address;
+    @Size(max = 11)
     private String phone;
     private Boolean isActive;
     private Integer version;
@@ -100,5 +113,6 @@ public class OrganizationDto {
     public OrganizationDto() {
 
     }
+
 
 }

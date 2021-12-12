@@ -2,7 +2,8 @@ package ru.irute.bellintegrator.practice.organization.servise;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import ru.irute.bellintegrator.practice.organization.dao.OrganizationDao;
+import org.springframework.transaction.annotation.Transactional;
+import ru.irute.bellintegrator.practice.organization.dao.OrganizationDaoImpl;
 import ru.irute.bellintegrator.practice.organization.dto.OrganizationDto;
 import ru.irute.bellintegrator.practice.organization.entity.Organization;
 import org.modelmapper.ModelMapper;
@@ -12,28 +13,31 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @Service
-public class OrganizationService {
+public class OrganizationServiceImpl implements OrganizationService{
 
-    private final OrganizationDao organizationDao;
+    private final OrganizationDaoImpl organizationDao;
     private final ModelMapper modelMapper;
 
     @Autowired
-    public OrganizationService(OrganizationDao organizationDao, ModelMapper modelMapper) {
+    public OrganizationServiceImpl(OrganizationDaoImpl organizationDao, ModelMapper modelMapper) {
         this.organizationDao = organizationDao;
         this.modelMapper = modelMapper;
     }
 
-    /**
-     * сохранить организацию
-     */
+
+    @Override
+    public OrganizationDto getById(Long id) {
+        Organization organization = organizationDao.getById(id);
+        return modelMapper.map(organization, OrganizationDto.class);
+    }
+
+    @Override
     public void  save(OrganizationDto orgDto ){
         Organization org = modelMapper.map(orgDto , Organization.class);
         organizationDao.save(org);
     }
 
-    /**
-     * получить список организаций
-     */
+    @Override
     public List<OrganizationDto> listAll(){
         List<Organization> orgAll=organizationDao.all();
         List <OrganizationDto> organizationDto;
@@ -41,13 +45,13 @@ public class OrganizationService {
         return organizationDto;
     }
 
-    /**
-     * обновить данные об организации
-     */
+
+    @Override
     public void update (OrganizationDto orgDto ){
         Organization org = modelMapper.map(orgDto , Organization.class);
         organizationDao.update(org);
     }
+
     /**
      * конвертировать объект Entity в объект Dto
      */

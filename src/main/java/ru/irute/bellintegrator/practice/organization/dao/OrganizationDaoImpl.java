@@ -9,23 +9,24 @@ import java.util.List;
 import java.util.Objects;
 
 @Repository
-public class OrganizationDao {
+public class OrganizationDaoImpl implements OrganizationDao{
 
     private final EntityManager em;
 
     @Autowired
-    public OrganizationDao(EntityManager em){ this.em = em;}
+    public OrganizationDaoImpl(EntityManager em){ this.em = em;}
 
 
-
+    @Override
     public Organization getById(Long id){
         return em.find(Organization.class, id);
     }
 
+    @Override
     public void save(Organization organization) {
         em.persist(organization);
     }
-
+    @Override
     public void update(Organization organization) {
         Organization existingOrg = em.find(Organization.class, organization.getId());
         existingOrg.setName(organization.getName());
@@ -41,7 +42,7 @@ public class OrganizationDao {
         existingOrg.setIsActive(true);
     }
 
-
+    @Override
     public List<Organization> all() {
         return em.createQuery("SELECT o FROM Organization o", Organization.class).getResultList();
     }
