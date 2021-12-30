@@ -2,7 +2,7 @@ package ru.irute.bellintegrator.practice.organization.dao;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
-import ru.irute.bellintegrator.practice.organization.entity.Organization;
+import ru.irute.bellintegrator.practice.organization.entity.OrganizationEntity;
 
 import javax.persistence.EntityManager;
 import java.util.List;
@@ -18,32 +18,43 @@ public class OrganizationDaoImpl implements OrganizationDao{
 
 
     @Override
-    public Organization getById(Long id){
-        return em.find(Organization.class, id);
+    public OrganizationEntity getById(Long id){
+        return em.find(OrganizationEntity.class, id);
     }
 
     @Override
-    public void save(Organization organization) {
-        em.persist(organization);
+    public void save(OrganizationEntity organizationEntity) {
+        em.persist(organizationEntity);
     }
     @Override
-    public void update(Organization organization) {
-        Organization existingOrg = em.find(Organization.class, organization.getId());
-        existingOrg.setName(organization.getName());
-        existingOrg.setFullName(organization.getFullName());
-        existingOrg.setInn(organization.getInn());
-        existingOrg.setKpp(organization.getKpp());
-        existingOrg.setAddress(organization.getAddress());
-
-            if (Objects.nonNull(organization.getPhone())) {
-                existingOrg.setPhone(organization.getPhone());
-            }
+            //убираем из дао
+    public void update(OrganizationEntity organizationEntity) {
+         //   все проверить
+        OrganizationEntity existingOrg = em.find(OrganizationEntity.class, organizationEntity.getId());
+        if (Objects.nonNull(organizationEntity.getName())) {
+            existingOrg.setName(organizationEntity.getName());
+        }
+        if (Objects.nonNull(organizationEntity.getFullName())) {
+            existingOrg.setFullName(organizationEntity.getFullName());
+        }
+        if (Objects.nonNull(organizationEntity.getInn())) {
+            existingOrg.setInn(organizationEntity.getInn());
+        }
+        if (Objects.nonNull(organizationEntity.getKpp())) {
+            existingOrg.setKpp(organizationEntity.getKpp());
+        }
+        if (Objects.nonNull(organizationEntity.getAddress())) {
+            existingOrg.setAddress(organizationEntity.getAddress());
+        }
+        if (Objects.nonNull(organizationEntity.getPhone())) {
+            existingOrg.setPhone(organizationEntity.getPhone());
+        }
 
         existingOrg.setIsActive(true);
     }
 
     @Override
-    public List<Organization> all() {
-        return em.createQuery("SELECT o FROM Organization o", Organization.class).getResultList();
+    public List<OrganizationEntity> all() {
+        return em.createQuery("SELECT o FROM Organization o", OrganizationEntity.class).getResultList();
     }
 }

@@ -1,28 +1,28 @@
 package ru.irute.bellintegrator.practice.organization.dao;
 
-import ru.irute.bellintegrator.practice.organization.entity.Organization;
+import ru.irute.bellintegrator.practice.organization.entity.OrganizationEntity;
 
 import java.util.List;
 
 
 public interface OrganizationDao {
     /**
-     * Получить Organization по идентификатору
+     * Получить OrganizationEntity по идентификатору
      */
-     Organization getById(Long id);
+     OrganizationEntity getById(Long id);
 
     /**
      * сохранить организацию
      */
-     void save(Organization organization);
+     void save(OrganizationEntity organizationEntity);
 
     /**
      * обновить данные об организации
      */
-     void update(Organization organization);
+     void update(OrganizationEntity organizationEntity);
 
     /**
-     * Получить все объекты Organization
+     * Получить все объекты OrganizationEntity
      */
-     List<Organization> all();
+     List<OrganizationEntity> all();
 }

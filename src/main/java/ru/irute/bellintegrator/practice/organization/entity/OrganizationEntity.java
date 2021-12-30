@@ -7,7 +7,7 @@ import javax.persistence.*;
 import java.util.List;
 
 @Entity(name = "Organization")
-public class Organization {
+public class OrganizationEntity {
     @Id
     @GeneratedValue (strategy = GenerationType.IDENTITY)
     private Long id;
@@ -63,7 +63,7 @@ public class Organization {
     /**
      *конструктор
      */
-    public Organization(){
+    public OrganizationEntity(){
 
     }
 
@@ -157,11 +157,11 @@ public class Organization {
     public void setIsActive(boolean b) {
     }
 
-    public Organization(Long id, String name,
-                        String fullName, Integer inn,
-                        Integer kpp, String address,
-                        String phone, Boolean isActive,
-                        Integer version, List<Office> offices) {
+    public OrganizationEntity(Long id, String name,
+                              String fullName, Integer inn,
+                              Integer kpp, String address,
+                              String phone, Boolean isActive,
+                              Integer version, List<Office> offices) {
         this.id = id;
         this.name = name;
         this.fullName = fullName;
