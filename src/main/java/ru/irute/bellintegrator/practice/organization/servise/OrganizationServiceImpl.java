@@ -2,6 +2,7 @@ package ru.irute.bellintegrator.practice.organization.servise;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import ru.irute.bellintegrator.practice.organization.dao.OrganizationDaoImpl;
 import ru.irute.bellintegrator.practice.organization.dto.OrganizationDto;
 import ru.irute.bellintegrator.practice.organization.entity.OrganizationEntity;
@@ -26,12 +27,14 @@ public class OrganizationServiceImpl implements OrganizationService{
 
 
     @Override
+    @Transactional
     public OrganizationDto getById(Long id) {
         OrganizationEntity organizationEntity = organizationDao.getById(id);
         return modelMapper.map(organizationEntity, OrganizationDto.class);
     }
 
     @Override
+    @Transactional
     public void  save(OrganizationDto orgDto ){
         OrganizationEntity org = modelMapper.map(orgDto , OrganizationEntity.class);
         organizationDao.save(org);
@@ -46,47 +49,46 @@ public class OrganizationServiceImpl implements OrganizationService{
         return organizationDto;
     }
 
+    @Override
+    @Transactional
+    public List<OrganizationDto> getList(OrganizationDto orgDto) {
+        OrganizationEntity org = modelMapper.map(orgDto , OrganizationEntity.class);
+        List<OrganizationEntity> list = organizationDao.getList(org);
+        List <OrganizationDto> organizationDto;
+        organizationDto = list.stream().map(x->convertEntityToDto(x)).collect(Collectors.toList());
+        return organizationDto;
+    }
+
 
     @Override
+    @Transactional
     public void update (OrganizationDto orgDto ){
       OrganizationEntity org = modelMapper.map(orgDto , OrganizationEntity.class);
       Long id = org.getId();
       OrganizationEntity existingOrg= organizationDao.getById(id);
+        if (Objects.nonNull(existingOrg)) {
+            if (Objects.nonNull(org.getName())) {
+                existingOrg.setName(org.getName());
+            }
+            if (Objects.nonNull(org.getFullName())) {
+                existingOrg.setFullName(org.getFullName());
+            }
+            if (Objects.nonNull(org.getInn())) {
+                existingOrg.setInn(org.getInn());
+            }
+            if (Objects.nonNull(org.getKpp())) {
+                existingOrg.setKpp(org.getKpp());
+            }
+            if (Objects.nonNull(org.getAddress())) {
+                existingOrg.setAddress(org.getAddress());
+            }
+            if (Objects.nonNull(org.getPhone())) {
+                existingOrg.setPhone(org.getPhone());
+            }
 
-        if (Objects.nonNull(org.getName())) {
-            existingOrg.setName(org.getName());
+            existingOrg.setIsActive(true);
         }
-        if (Objects.nonNull(org.getFullName())) {
-            existingOrg.setFullName(org.getFullName());
-        }
-        if (Objects.nonNull(org.getInn())) {
-            existingOrg.setInn(org.getInn());
-        }
-        if (Objects.nonNull(org.getKpp())) {
-            existingOrg.setKpp(org.getKpp());
-        }
-        if (Objects.nonNull(org.getAddress())) {
-            existingOrg.setAddress(org.getAddress());
-        }
-        if (Objects.nonNull(org.getPhone())) {
-            existingOrg.setPhone(org.getPhone());
-        }
-
-        existingOrg.setIsActive(true);
         organizationDao.save(org);
-
-     //   OrganizationDto id = getById(org.getId());
-      //  OrganizationDto id = getById(orgDto.getId());
-
-
-   //     то что в дао
-    //    мапит в ентити
-    //    вызвать гетбай айди
-    //            записываю в ентити
-     //           сохраняю для ентити
-      //  OrganizationEntity org = modelMapper.map(orgDto , OrganizationEntity.class);
-     //   organizationDao.update(org);
-
     }
 
     /**

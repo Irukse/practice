@@ -156,6 +156,7 @@ public class OrganizationEntity {
 
     public void setIsActive(boolean b) {
     }
+    public Boolean getIsActive(){return isActive;}
 
     public OrganizationEntity(Long id, String name,
                               String fullName, Integer inn,
@@ -173,4 +174,7 @@ public class OrganizationEntity {
         this.version = version;
         this.offices = offices;
     }
+
+
+
 }

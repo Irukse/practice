@@ -17,12 +17,12 @@ public interface OrganizationDao {
      void save(OrganizationEntity organizationEntity);
 
     /**
-     * обновить данные об организации
-     */
-     void update(OrganizationEntity organizationEntity);
-
-    /**
      * Получить все объекты OrganizationEntity
      */
      List<OrganizationEntity> all();
+
+    /**Получить список организации, отсортированных по параметрам name/inn/isActive
+     *@return
+     */
+    List<OrganizationEntity> getList(OrganizationEntity organization);
 }
