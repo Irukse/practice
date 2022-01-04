@@ -37,6 +37,8 @@ CREATE TABLE IF NOT EXISTS Office (
 
 CREATE TABLE IF NOT EXISTS Employee (
     id              BIGINT      NOT NULL       PRIMARY KEY AUTO_INCREMENT,
+    office_id       BIGINT      COMMENT 'Идентификатор связанный с идентификатором (id) в таблице OfficeEntity',
+    FOREIGN KEY (office_id)     REFERENCES Office (id),
     first_name      VARCHAR(50) NOT NULL COMMENT 'Имя пользователя',
     second_name     VARCHAR(50) COMMENT 'Фамилия пользователя',
     last_name       VARCHAR(50) COMMENT 'Второе имя/Отчество пользователя',

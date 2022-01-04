@@ -1,7 +1,6 @@
 package ru.irute.bellintegrator.practice.organization.entity;
 
-import ma.glasnost.orika.MapperFacade;
-import ru.irute.bellintegrator.practice.offise.entity.Office;
+import ru.irute.bellintegrator.practice.offise.entity.OfficeEntity;
 
 import javax.persistence.*;
 import java.util.List;
@@ -68,11 +67,19 @@ public class OrganizationEntity {
     }
 
     /**
+     * создадим связь OneToMany и сопоставим с объектом
+     * class OfficeEntity через переменную private OrganizationEntity organization in
+     * clsaa OfficeEntity;
+     */
+    @OneToMany(mappedBy = "organization",cascade = CascadeType.ALL, orphanRemoval = true)
+    /**
      * добавим поле office
      */
-    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
-    @JoinColumn(name = "id")
-    private List <Office> offices;
+    public List<OfficeEntity> officeEntities;
+    // неправильнофй
+ //  @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
+ //   @JoinColumn(name = "id")
+
 
     public Long getId() {
         return id;
@@ -146,12 +153,12 @@ public class OrganizationEntity {
         this.version = version;
     }
 
-    public List<Office> getOffices() {
-        return offices;
+    public List<OfficeEntity> getOfficeEntities() {
+        return officeEntities;
     }
 
-    public void setOffices(List<Office> offices) {
-        this.offices = offices;
+    public void setOfficeEntities(List<OfficeEntity> officeEntities) {
+        this.officeEntities = officeEntities;
     }
 
     public void setIsActive(boolean b) {
@@ -162,7 +169,7 @@ public class OrganizationEntity {
                               String fullName, Integer inn,
                               Integer kpp, String address,
                               String phone, Boolean isActive,
-                              Integer version, List<Office> offices) {
+                              Integer version, List<OfficeEntity> officeEntities) {
         this.id = id;
         this.name = name;
         this.fullName = fullName;
@@ -172,7 +179,7 @@ public class OrganizationEntity {
         this.phone = phone;
         this.isActive = isActive;
         this.version = version;
-        this.offices = offices;
+        this.officeEntities = officeEntities;
     }
 
 

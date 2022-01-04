@@ -1,9 +1,13 @@
 package ru.irute.bellintegrator.practice.offise.entity;
 
+import ru.irute.bellintegrator.practice.employee.entity.EmployeeEntity;
+import ru.irute.bellintegrator.practice.organization.entity.OrganizationEntity;
+
 import javax.persistence.*;
+import java.util.List;
 
 @Entity(name = "Office")
-public class Office {
+public class OfficeEntity {
     @Id
     @GeneratedValue (strategy = GenerationType.IDENTITY)
     @Column(name = "id")
@@ -28,16 +32,45 @@ public class Office {
     private String phone;
 
     /**
+     * колонка, хранящая первичный ключ организации
+     */
+    //нужно ли это поле?
+    @Column(name = "org_id")
+    private Long orgId;
+
+    /**
      *
      */
     @Column(name = "is_active")
     private Boolean isActive;
+
 
     /**
      * Служебное поле Hibernate
      */
     @Version
     private Integer version;
+
+    /**
+     * указываем имя столбца (name = "org_id"),
+     * в котором будет храниться первичный ключ Организации
+     */
+    @ManyToOne(fetch = FetchType.LAZY,cascade = CascadeType.ALL)
+    @JoinColumn(name = "org_id")
+    /**
+     * организация, которой принадлежит офис
+     */
+    private OrganizationEntity organization;
+
+    /**
+     * создадим связь OneToMany и сопоставим с объектом
+     * class EmployeeEntity через переменную private OfficeEntity officeEntity in class EmployeeEntity;
+     */
+    @OneToMany(mappedBy = "officeEntity",cascade = CascadeType.ALL, orphanRemoval = true)
+    /**
+     * добавим поле Entity
+     */
+    public List<EmployeeEntity> employeeEntities;
 
     public Long getId() {
         return id;
@@ -71,6 +104,14 @@ public class Office {
         this.phone = phone;
     }
 
+    public Long getOrgId() {
+        return organization.getId();
+    }
+
+    public void setOrgId(Long orgId) {
+        organization.setId(orgId);
+    }
+
     public Boolean getActive() {
         return isActive;
     }
@@ -86,4 +127,5 @@ public class Office {
     public void setVersion(Integer version) {
         this.version = version;
     }
+
 }

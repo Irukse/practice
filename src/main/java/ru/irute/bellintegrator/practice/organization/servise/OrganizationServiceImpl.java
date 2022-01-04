@@ -36,6 +36,7 @@ public class OrganizationServiceImpl implements OrganizationService{
     @Override
     @Transactional
     public void  save(OrganizationDto orgDto ){
+        // применить проверку spring aop соответствие емэйла ?
         OrganizationEntity org = modelMapper.map(orgDto , OrganizationEntity.class);
         organizationDao.save(org);
     }

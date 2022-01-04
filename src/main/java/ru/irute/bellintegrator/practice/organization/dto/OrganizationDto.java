@@ -1,7 +1,7 @@
 package ru.irute.bellintegrator.practice.organization.dto;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
-import ru.irute.bellintegrator.practice.offise.entity.Office;
+import ru.irute.bellintegrator.practice.offise.entity.OfficeEntity;
 
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
@@ -28,7 +28,7 @@ public class OrganizationDto {
     private String phone;
     private Boolean isActive;
     private Integer version;
-    private List<Office> offices;
+    private List<OfficeEntity> officeEntities;
 
     public Boolean getActive() {
         return isActive;
@@ -46,12 +46,12 @@ public class OrganizationDto {
         this.version = version;
     }
 
-    public List<Office> getOffices() {
-        return offices;
+    public List<OfficeEntity> getOfficeEntities() {
+        return officeEntities;
     }
 
-    public void setOffices(List<Office> offices) {
-        this.offices = offices;
+    public void setOfficeEntities(List<OfficeEntity> officeEntities) {
+        this.officeEntities = officeEntities;
     }
 
     public Long getId() {
