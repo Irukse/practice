@@ -38,7 +38,7 @@ public class OrganizationEntity {
     /**
      *адресс
      */
-    @Column(name = "address ", length = 50, nullable = false)
+    @Column(name = "address", length = 50, nullable = false)
     private String address;
 
     /**
