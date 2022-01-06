@@ -24,10 +24,6 @@ public interface OrganizationService {
     void update(OrganizationDto getDto);
 
     /**
-     * получить список всех организаций
-     */
-    List<OrganizationDto> listAll();
-    /**
      * получить список организаций,отсортированных по параметрам name/inn/isActive
      */
     List<OrganizationDto> getList(OrganizationDto orgView);
