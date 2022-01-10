@@ -14,19 +14,6 @@ public class EmployeeEntity {
     private Long id;
 
     /**
-     *служебное поле hibernate
-     */
-    @Version
-    private Integer version;
-
-    /**
-     * колонка, хранящая первичный ключ офиса
-     */
-    //нужно ли это поле?
-    @Column(name = "office_id")
-    private Long officeId;
-
-    /**
      *имя
      */
     @Column(name = "first_name",length = 50, nullable = false)
@@ -53,7 +40,7 @@ public class EmployeeEntity {
     /**
      *телефон
      */
-    @Column(length = 20)
+    @Column(length = 11)
     private String phone;
 
     /**
@@ -61,6 +48,12 @@ public class EmployeeEntity {
      */
     @Column(name = "is_identified")
     private Boolean isIdentified;
+
+    /**
+     *служебное поле hibernate
+     */
+    @Version
+    private Integer version;
 
     /**
      * указываем имя столбца (name = "office_id"),
@@ -81,6 +74,10 @@ public class EmployeeEntity {
         this.id = id;
     }
 
+    /**
+     *геттеры и сеттеры
+     */
+
     public Integer getVersion() {
         return version;
     }
@@ -89,13 +86,6 @@ public class EmployeeEntity {
         this.version = version;
     }
 
-    public Long getOfficeId() {
-        return officeId;
-    }
-
-    public void setOfficeId(Long officeId) {
-        this.officeId = officeId;
-    }
 
     public String getFirstName() {
         return firstName;

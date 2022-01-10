@@ -35,8 +35,8 @@ public class OfficeEntity {
      * колонка, хранящая первичный ключ организации
      */
     //нужно ли это поле?
-    @Column(name = "org_id")
-    private Long orgId;
+  //  @Column(name = "org_id")
+  //  private Long orgId;
 
     /**
      *

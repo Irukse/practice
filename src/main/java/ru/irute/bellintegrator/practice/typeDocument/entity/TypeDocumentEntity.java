@@ -1,24 +1,22 @@
-package ru.irute.bellintegrator.practice.country.entity;
+package ru.irute.bellintegrator.practice.typeDocument.entity;
 
 import javax.persistence.*;
-@Entity
-public class Country {
+@Entity (name = "Type_document")
+public class TypeDocumentEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-
-
     /**
-     *название страны
+     *тип документа
      */
-    @Column(length = 25,nullable = false)
+    @Column(name = "name_type",length = 10, nullable = false)
     private String name;
 
     /**
-     *код страны
+     *код документа
      */
-    @Column(length = 3, nullable = false)
+    @Column(length = 2, nullable = false)
     private String code;
 
     /**
@@ -30,11 +28,11 @@ public class Country {
     /**
      *конструкторы
      */
-    public Country(){
+    public TypeDocumentEntity(){
 
     }
 
-    public Country(String name, String code) {
+    public TypeDocumentEntity(String name, String code) {
         this.name = name;
         this.code = code;
     }
@@ -42,13 +40,8 @@ public class Country {
     /**
      *геттеры и сеттеры
      */
-
     public Long getId() {
         return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
     }
 
     public String getName() {

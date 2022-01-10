@@ -16,22 +16,19 @@ public class OrganizationController {
 
     @Autowired
     public OrganizationController(OrganizationServiceImpl orgService){
-        this.organizationService = orgService;}
-
-    @PostMapping("/list")
-    public List<OrganizationDto> all(){
-        List<OrganizationDto> orgAll= organizationService.listAll();
-        return orgAll;
+        this.organizationService = orgService;
     }
+
     @PostMapping("/save")
     public void save(@RequestBody OrganizationDto organizationDto){
         organizationService.save(organizationDto);
     }
+
     @PostMapping("/update")
     public void update (@RequestBody OrganizationDto organizationDto){
         organizationService.update(organizationDto);
-
     }
+
     @GetMapping("/{id}")
     public OrganizationDto getById(@PathVariable("id") Long orgId){
         return organizationService.getById(orgId);
