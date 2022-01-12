@@ -33,6 +33,7 @@ public class OrganizationController {
     public OrganizationDto getById(@PathVariable("id") Long orgId){
         return organizationService.getById(orgId);
     }
+
     @PostMapping("/list")
     public List<OrganizationDto> getList(@RequestBody OrganizationDto organizationDto){
         return organizationService.getList(organizationDto);

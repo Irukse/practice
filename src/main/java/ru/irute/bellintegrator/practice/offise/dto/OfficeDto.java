@@ -21,7 +21,7 @@ public class OfficeDto {
     @Size(max = 11)
     private String phone;
 
- //   @NotNull  ?
+    @NotNull
     private Long orgId;
 
     private Boolean isActive;

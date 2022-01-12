@@ -128,4 +128,11 @@ public class OfficeEntity {
         this.version = version;
     }
 
+    public OrganizationEntity getOrganization() {
+        return organization;
+    }
+
+    public void setOrganization(OrganizationEntity organization) {
+        this.organization = organization;
+    }
 }
