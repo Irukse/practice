@@ -1,8 +1,10 @@
 package ru.irute.bellintegrator.practice.organization.entity;
 
+import org.springframework.transaction.annotation.Transactional;
 import ru.irute.bellintegrator.practice.offise.entity.OfficeEntity;
 
 import javax.persistence.*;
+import java.util.LinkedList;
 import java.util.List;
 
 @Entity(name = "Organization")
@@ -59,6 +61,21 @@ public class OrganizationEntity {
     @Version
     private Integer version;
 
+
+
+    /**
+     * создадим связь OneToMany и сопоставим с объектом
+     * class OfficeEntity через переменную private OrganizationEntity organization in
+     * clsaa OfficeEntity;
+     */
+   @OneToMany(mappedBy = "organization",cascade = CascadeType.ALL, orphanRemoval = true)
+    /**
+     * добавим поле office
+     */
+
+   public List<OfficeEntity> officeEntities;
+ //  public OfficeEntity officeEntity;
+
     /**
      *конструктор
      */
@@ -66,28 +83,11 @@ public class OrganizationEntity {
 
     }
 
-    /**
-     * создадим связь OneToMany и сопоставим с объектом
-     * class OfficeEntity через переменную private OrganizationEntity organization in
-     * clsaa OfficeEntity;
-     */
-    @OneToMany(mappedBy = "organization",cascade = CascadeType.ALL, orphanRemoval = true)
-    /**
-     * добавим поле office
-     */
-    public List<OfficeEntity> officeEntities;
-    // неправильнофй
- //  @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
- //   @JoinColumn(name = "id")
-
 
     public Long getId() {
         return id;
     }
 
-    public void setId(Long id) {
-        this.id = id;
-    }
 
     public String getName() {
         return name;
@@ -153,13 +153,13 @@ public class OrganizationEntity {
         this.version = version;
     }
 
-    public List<OfficeEntity> getOfficeEntities() {
-        return officeEntities;
-    }
+   public List<OfficeEntity> getOfficeEntities() {
+       return officeEntities;
+   }
 
     public void setOfficeEntities(List<OfficeEntity> officeEntities) {
         this.officeEntities = officeEntities;
-    }
+   }
 
     public void setIsActive(boolean b) {
     }
@@ -169,7 +169,9 @@ public class OrganizationEntity {
                               String fullName, Integer inn,
                               Integer kpp, String address,
                               String phone, Boolean isActive,
-                              Integer version, List<OfficeEntity> officeEntities) {
+                              Integer version,
+                              List<OfficeEntity> officeEntities)
+                              {
         this.id = id;
         this.name = name;
         this.fullName = fullName;
@@ -182,6 +184,10 @@ public class OrganizationEntity {
         this.officeEntities = officeEntities;
     }
 
+    public void addOffice(OfficeEntity officeEntity){
+        List <OfficeEntity> list = new LinkedList<>();
+        list.add(officeEntity);
 
+    }
 
 }

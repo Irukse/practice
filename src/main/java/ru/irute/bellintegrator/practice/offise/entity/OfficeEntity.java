@@ -32,17 +32,17 @@ public class OfficeEntity {
     private String phone;
 
     /**
-     * колонка, хранящая первичный ключ организации
-     */
-    //нужно ли это поле?
-  //  @Column(name = "org_id")
-  //  private Long orgId;
-
-    /**
      *
      */
     @Column(name = "is_active")
     private Boolean isActive;
+
+    /**
+     *
+     */
+ //   @Column(name = "org_id")
+  //   private Long orgId;
+
 
 
     /**
@@ -51,16 +51,18 @@ public class OfficeEntity {
     @Version
     private Integer version;
 
+
     /**
      * указываем имя столбца (name = "org_id"),
      * в котором будет храниться первичный ключ Организации
      */
     @ManyToOne(fetch = FetchType.LAZY,cascade = CascadeType.ALL)
     @JoinColumn(name = "org_id")
+
     /**
      * организация, которой принадлежит офис
      */
-    private OrganizationEntity organization;
+     private OrganizationEntity organization;
 
     /**
      * создадим связь OneToMany и сопоставим с объектом
@@ -71,6 +73,14 @@ public class OfficeEntity {
      * добавим поле Entity
      */
     public List<EmployeeEntity> employeeEntities;
+
+    public OrganizationEntity getOrganization() {
+        return organization;
+    }
+
+    public void setOrganization(OrganizationEntity organization) {
+        this.organization = organization;
+    }
 
     public Long getId() {
         return id;
@@ -104,13 +114,13 @@ public class OfficeEntity {
         this.phone = phone;
     }
 
-    public Long getOrgId() {
-        return organization.getId();
-    }
-
-    public void setOrgId(Long orgId) {
-        organization.setId(orgId);
-    }
+  //  public Long getOrgId() {
+  //      return organization.getId();
+ //  }
+///// изменить
+ //  public void setOrgId(Long orgId) {
+ //     organization.setId(orgId);
+ //  }
 
     public Boolean getActive() {
         return isActive;
@@ -128,11 +138,20 @@ public class OfficeEntity {
         this.version = version;
     }
 
-    public OrganizationEntity getOrganization() {
-        return organization;
-    }
+  //  public Long getOrgId() {
+  //      return orgId;
+  //  }
 
-    public void setOrganization(OrganizationEntity organization) {
-        this.organization = organization;
-    }
+ //   public void setOrgId(Long orgId) {
+ //       this.orgId = orgId;
+ //   }
+
+ //   public OrganizationEntity getOrganization() {
+ //       return organization;
+ //   }
+
+  //  public void setOrganization(OrganizationEntity organization) {
+  //      this.organization = organization;
+  //  }
+
 }

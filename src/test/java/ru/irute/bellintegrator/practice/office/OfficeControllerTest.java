@@ -1,4 +1,4 @@
-package ru.irute.bellintegrator.practice.organization;
+package ru.irute.bellintegrator.practice.office;
 
 import org.junit.Assert;
 import org.junit.Test;
@@ -6,50 +6,32 @@ import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.boot.web.server.LocalServerPort;
-import org.springframework.http.*;
 import org.springframework.test.annotation.DirtiesContext;
 import org.springframework.test.context.junit4.SpringRunner;
-import org.springframework.test.context.web.WebAppConfiguration;
-import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.transaction.annotation.Transactional;
-import org.springframework.web.client.RestTemplate;
+import ru.irute.bellintegrator.practice.offise.controller.OfficeController;
+import ru.irute.bellintegrator.practice.offise.dao.OfficeDao;
+import ru.irute.bellintegrator.practice.offise.dto.OfficeDto;
 import ru.irute.bellintegrator.practice.organization.controller.OrganizationController;
 import ru.irute.bellintegrator.practice.organization.dao.OrganizationDao;
 import ru.irute.bellintegrator.practice.organization.dto.OrganizationDto;
-import ru.irute.bellintegrator.practice.organization.entity.OrganizationEntity;
-
-
-import java.net.URI;
-import java.net.URISyntaxException;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
-
-import static org.hamcrest.CoreMatchers.is;
-import static org.junit.Assert.assertThat;
-
-
 
 @Transactional
 @DirtiesContext
 @RunWith(SpringRunner.class)
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.DEFINED_PORT )
 @AutoConfigureMockMvc
-public class OrganizationControllerTest {
-
+public class OfficeControllerTest {
     @Autowired
-    private OrganizationDao organizationDao;
+    private OfficeDao officeDao;
     @Autowired
     private OrganizationController organizationController;
-
+    @Autowired
+    private OfficeController officeController;
 
     @Test
     public void test() {
-  //      Organization (id, name, full_name, inn, kpp,
-        //      address, phone, is_active, version)
-        //      VALUES (1, 'Газпром', 'ООО ГазПромВладивосток', 11112222, 22221111,
-        //      'ул.Циолковского, д.21', '8-921-333-21-13', true, 0 );
+
         OrganizationDto organizationDto = new OrganizationDto();
         organizationDto.setName("Газпром'");
         organizationDto.setFullName("ООО ГазПромВладивосток");
@@ -61,10 +43,23 @@ public class OrganizationControllerTest {
         organizationDto.setVersion(0);
 
         organizationController.save(organizationDto);
-        Assert.assertNotNull(organizationDao);
-      //  Assert.assertFalse(organizationDto.isEmpty());
-     //   Assert.assertEquals(1, organizationDto.size());
 
-        organizationController.getList(organizationDto);
+    //    INSERT INTO Office (id, org_id, name, address, phone, is_active, version) VALUES
+        //    (1, 1, 'Main office Gazprom', 'ул.Ленина, д.6', '8-925-906-32-12', true, 0 );
+        OfficeDto officeDto = new OfficeDto();
+     //   officeDto.setId(1L);
+        officeDto.setOrgId(1L);
+        officeDto.setName("Main office Gazprom");
+        officeDto.setAddress("ул.Циолковского, д.21");
+        officeDto.setPhone("89213332113");
+        officeDto.setActive(true);
+        officeDto.setVersion(0);
+
+        officeController.save(officeDto);
+        Assert.assertNotNull(officeDao);
+        //  Assert.assertFalse(organizationDto.isEmpty());
+        //   Assert.assertEquals(1, organizationDto.size());
+
+
     }
 }

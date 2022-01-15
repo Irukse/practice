@@ -2,6 +2,7 @@ package ru.irute.bellintegrator.practice.offise.dto;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import ru.irute.bellintegrator.practice.employee.entity.EmployeeEntity;
 import ru.irute.bellintegrator.practice.offise.entity.OfficeEntity;
+import ru.irute.bellintegrator.practice.organization.entity.OrganizationEntity;
 
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
@@ -28,6 +29,15 @@ public class OfficeDto {
     private Integer version;
 
     public List<EmployeeEntity> employeeEntities;
+    private OrganizationEntity organization;
+
+    public OrganizationEntity getOrganization() {
+        return organization;
+    }
+
+    public void setOrganization(OrganizationEntity organization) {
+        this.organization = organization;
+    }
 
     public Long getId() {
         return id;

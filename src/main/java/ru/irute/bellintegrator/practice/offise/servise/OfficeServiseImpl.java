@@ -1,5 +1,6 @@
 package ru.irute.bellintegrator.practice.offise.servise;
 
+import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import ru.irute.bellintegrator.practice.Mapper.ObjectMapperUtils;
@@ -19,11 +20,13 @@ public class OfficeServiseImpl implements OfficeServise{
 
     private final OfficeDao officeDao;
     private final OrganizationDao organizationDao;
+    private final ModelMapper modelMapper;
 
 
-    public OfficeServiseImpl(OfficeDao officeDao, OrganizationDao organizationDao) {
+    public OfficeServiseImpl(OfficeDao officeDao, OrganizationDao organizationDao, ModelMapper modelMapper) {
         this.officeDao = officeDao;
         this.organizationDao = organizationDao;
+        this.modelMapper = modelMapper;
     }
 
 
@@ -31,11 +34,16 @@ public class OfficeServiseImpl implements OfficeServise{
     @Override
     @Transactional
     public void save(OfficeDto officeDto) {
-        OrganizationEntity organizationEntity = organizationDao.getById(officeDto.getOrgId());
-        OfficeEntity officeEntity = ObjectMapperUtils.map(officeDto, OfficeEntity.class);
-        officeEntity.setOrganization(organizationEntity);
-        officeDao.save(officeEntity);
+
+        Long id = officeDto.getOrgId();
+        OrganizationEntity organizationEntity =  organizationDao.getById(id);
+
+        OfficeEntity office = ObjectMapperUtils.map(officeDto, OfficeEntity.class);
+        office.setOrganization(organizationEntity);
+        organizationEntity.addOffice(office);
+        officeDao.save(office);
     }
+
 
     @Override
     @Transactional(readOnly = true)
