@@ -4,6 +4,7 @@ import ru.irute.bellintegrator.practice.employee.entity.EmployeeEntity;
 import ru.irute.bellintegrator.practice.organization.entity.OrganizationEntity;
 
 import javax.persistence.*;
+import java.util.LinkedList;
 import java.util.List;
 
 @Entity(name = "Office")
@@ -38,14 +39,6 @@ public class OfficeEntity {
     private Boolean isActive;
 
     /**
-     *
-     */
- //   @Column(name = "org_id")
-  //   private Long orgId;
-
-
-
-    /**
      * Служебное поле Hibernate
      */
     @Version
@@ -68,7 +61,9 @@ public class OfficeEntity {
      * создадим связь OneToMany и сопоставим с объектом
      * class EmployeeEntity через переменную private OfficeEntity officeEntity in class EmployeeEntity;
      */
-    @OneToMany(mappedBy = "officeEntity",cascade = CascadeType.ALL, orphanRemoval = true)
+  //  @OneToMany(mappedBy = "officeEntity",cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany (cascade = CascadeType.ALL, orphanRemoval = true)
+    @JoinColumn(name = "office_id")
     /**
      * добавим поле Entity
      */
@@ -114,14 +109,6 @@ public class OfficeEntity {
         this.phone = phone;
     }
 
-  //  public Long getOrgId() {
-  //      return organization.getId();
- //  }
-///// изменить
- //  public void setOrgId(Long orgId) {
- //     organization.setId(orgId);
- //  }
-
     public Boolean getActive() {
         return isActive;
     }
@@ -138,20 +125,10 @@ public class OfficeEntity {
         this.version = version;
     }
 
-  //  public Long getOrgId() {
-  //      return orgId;
-  //  }
+    public void addEmployee (EmployeeEntity employeeEntity){
+        List <EmployeeEntity> list = new LinkedList<>();
+        list.add(employeeEntity);
 
- //   public void setOrgId(Long orgId) {
- //       this.orgId = orgId;
- //   }
-
- //   public OrganizationEntity getOrganization() {
- //       return organization;
- //   }
-
-  //  public void setOrganization(OrganizationEntity organization) {
-  //      this.organization = organization;
-  //  }
+    }
 
 }

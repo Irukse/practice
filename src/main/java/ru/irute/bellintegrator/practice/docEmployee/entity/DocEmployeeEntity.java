@@ -5,7 +5,8 @@ import ru.irute.bellintegrator.practice.typeDocument.entity.TypeDocumentEntity;
 
 import javax.persistence.*;
 
-@Entity (name = "Doc_employee")
+@Entity
+@Table(name = "Doc_employee")
 
 public class DocEmployeeEntity {
     @Id
@@ -24,23 +25,20 @@ public class DocEmployeeEntity {
     @Column(name = "doc_date", length = 50, nullable = false)
     private String docDate;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    /**
+     * Код типа документа
+     */
+    @OneToOne
     @JoinColumn(name = "type_id")
     private TypeDocumentEntity docType;
 
-    @OneToOne(fetch = FetchType.LAZY)
+    /**
+     *  Документы работника
+     */
+
+    @ManyToOne
     @JoinColumn(name = "emp_id")
     private EmployeeEntity employee;
-
-
-    public DocEmployeeEntity(){
-
-    }
-
-    public DocEmployeeEntity(Long docNumber, String docDate) {
-        this.docNumber = docNumber;
-        this.docDate = docDate;
-    }
 
     /**
      *геттеры и сеттеры
@@ -68,6 +66,14 @@ public class DocEmployeeEntity {
 
     public void setDocDate(String docDate) {
         this.docDate = docDate;
+    }
+
+    public Integer getVersion() {
+        return version;
+    }
+
+    public void setVersion(Integer version) {
+        this.version = version;
     }
 
     public TypeDocumentEntity getDocType() {

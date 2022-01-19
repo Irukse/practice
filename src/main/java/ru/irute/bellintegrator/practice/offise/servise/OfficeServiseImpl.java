@@ -5,9 +5,11 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import ru.irute.bellintegrator.practice.Mapper.ObjectMapperUtils;
 import ru.irute.bellintegrator.practice.offise.dao.OfficeDao;
+import ru.irute.bellintegrator.practice.offise.dao.OfficeDaoImpl;
 import ru.irute.bellintegrator.practice.offise.dto.OfficeDto;
 import ru.irute.bellintegrator.practice.offise.entity.OfficeEntity;
 import ru.irute.bellintegrator.practice.organization.dao.OrganizationDao;
+import ru.irute.bellintegrator.practice.organization.dao.OrganizationDaoImpl;
 import ru.irute.bellintegrator.practice.organization.entity.OrganizationEntity;
 
 import java.util.HashMap;
@@ -18,12 +20,12 @@ import java.util.Objects;
 @Service
 public class OfficeServiseImpl implements OfficeServise{
 
-    private final OfficeDao officeDao;
-    private final OrganizationDao organizationDao;
+    private final OfficeDaoImpl officeDao;
+    private final OrganizationDaoImpl organizationDao;
     private final ModelMapper modelMapper;
 
 
-    public OfficeServiseImpl(OfficeDao officeDao, OrganizationDao organizationDao, ModelMapper modelMapper) {
+    public OfficeServiseImpl(OfficeDaoImpl officeDao, OrganizationDaoImpl organizationDao, ModelMapper modelMapper) {
         this.officeDao = officeDao;
         this.organizationDao = organizationDao;
         this.modelMapper = modelMapper;
@@ -43,7 +45,6 @@ public class OfficeServiseImpl implements OfficeServise{
         organizationEntity.addOffice(office);
         officeDao.save(office);
     }
-
 
     @Override
     @Transactional(readOnly = true)

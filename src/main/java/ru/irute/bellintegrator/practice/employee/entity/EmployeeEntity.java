@@ -1,5 +1,7 @@
 package ru.irute.bellintegrator.practice.employee.entity;
 
+import ru.irute.bellintegrator.practice.country.entity.CountryEntity;
+import ru.irute.bellintegrator.practice.docEmployee.entity.DocEmployeeEntity;
 import ru.irute.bellintegrator.practice.offise.entity.OfficeEntity;
 import ru.irute.bellintegrator.practice.organization.entity.OrganizationEntity;
 
@@ -50,21 +52,34 @@ public class EmployeeEntity {
     private Boolean isIdentified;
 
     /**
+     *
+     */
+    @Column(name = "office_id")
+    private Long officeId;
+
+    /**
      *служебное поле hibernate
      */
     @Version
     private Integer version;
 
     /**
-     * указываем имя столбца (name = "office_id"),
-     * в котором будет храниться первичный ключ Организации
+     * документ, принадлежащий работнику
      */
-    @ManyToOne(fetch = FetchType.LAZY,cascade = CascadeType.ALL)
-    @JoinColumn(name = "office_id")
+//    @OneToOne(
+ //           mappedBy = "employee",
+ //           cascade = CascadeType.ALL
+ //   )
+ //   private DocEmployeeEntity docEmployee;
+
+
     /**
-     * организация, которой принадлежит офис
+     * FOREIGN KEY (citizenship_id)    REFERENCES Country(id)
      */
-    private OfficeEntity officeEntity;
+    @OneToOne
+    @JoinColumn(name = "citizenship_id")
+    private CountryEntity country;
+
 
     public Long getId() {
         return id;
@@ -72,6 +87,10 @@ public class EmployeeEntity {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public EmployeeEntity() {
+
     }
 
     /**
@@ -134,4 +153,32 @@ public class EmployeeEntity {
     public void setIdentified(Boolean identified) {
         isIdentified = identified;
     }
+
+    public Long getOfficeId() {
+        return officeId;
+    }
+
+    public void setOfficeId(Long officeId) {
+        this.officeId = officeId;
+    }
+
+  //  public DocEmployeeEntity getDocEmployee() {
+  //      return docEmployee;
+  //  }
+
+  //  public void setDocEmployee(DocEmployeeEntity docEmployee) {
+  //     this.docEmployee = docEmployee;
+   // }
+    public CountryEntity getCountry() {
+        return country;
+    }
+
+    public void setCountry(CountryEntity country) {
+        this.country = country;
+    }
+
+    public void setCodeCountry (Integer integer){
+
+    }
+
 }

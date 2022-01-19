@@ -1,7 +1,9 @@
 package ru.irute.bellintegrator.practice.typeDocument.entity;
 
 import javax.persistence.*;
-@Entity (name = "Type_document")
+@Entity
+@Table(name = "Type_document")
+
 public class TypeDocumentEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -16,26 +18,14 @@ public class TypeDocumentEntity {
     /**
      *код документа
      */
-    @Column(length = 2, nullable = false)
-    private String code;
+    @Column(name = "code", length = 2, nullable = false)
+    private String typeDocCode;
 
     /**
      * служебное поле hibernate
      */
     @Version
     private Integer version;
-
-    /**
-     *конструкторы
-     */
-    public TypeDocumentEntity(){
-
-    }
-
-    public TypeDocumentEntity(String name, String code) {
-        this.name = name;
-        this.code = code;
-    }
 
     /**
      *геттеры и сеттеры
@@ -53,10 +43,10 @@ public class TypeDocumentEntity {
     }
 
     public String getCode() {
-        return code;
+        return typeDocCode;
     }
 
     public void setCode(String code) {
-        this.code = code;
+        this.typeDocCode = code;
     }
 }

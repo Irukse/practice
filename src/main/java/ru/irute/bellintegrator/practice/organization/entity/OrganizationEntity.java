@@ -74,7 +74,6 @@ public class OrganizationEntity {
      */
 
    public List<OfficeEntity> officeEntities;
- //  public OfficeEntity officeEntity;
 
     /**
      *конструктор
