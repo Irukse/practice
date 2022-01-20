@@ -27,21 +27,24 @@ public class EmployeeDto {
     @Size(max = 11)
     public String phone;
 
+// берем из Type_document
     @NotEmpty
-    public Long docCode;
+    public String docCode;
 
+    // берем из Type_document typeDocCode
     @NotEmpty
     public String docName;
 
+// берем из Doc_employee
     @NotEmpty
     public Long docNumber;
 
     @NotEmpty
     public String docDate;
-
+// имя страны  берем из Country
     @NotEmpty
     public String citizenshipName;
-
+// код страны берем из Country
     @NotEmpty
     public Long citizenshipCode;
 
@@ -98,11 +101,11 @@ public class EmployeeDto {
         this.phone = phone;
     }
 
-    public Long getDocCode() {
+    public String getDocCode() {
         return docCode;
     }
 
-    public void setDocCode(Long docCode) {
+    public void setDocCode(String docCode) {
         this.docCode = docCode;
     }
 

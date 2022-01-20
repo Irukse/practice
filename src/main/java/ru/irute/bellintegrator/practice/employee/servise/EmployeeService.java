@@ -14,12 +14,12 @@ public interface EmployeeService {
     /**
      *список всех работников, отсортированный по офису и т.д.
      */
-  //  List<EmployeeDto> list(EmployeeDto emplView);
+  List<EmployeeDto> list(EmployeeDto empl);
 
     /**
      * обновить информацию о работнике
      */
-  //  void update(EmployeeDto emplView);
+  //  void update(EmployeeDto empl);
 
     /**
      * добавить работника

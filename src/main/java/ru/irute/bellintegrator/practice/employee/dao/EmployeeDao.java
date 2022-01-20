@@ -10,20 +10,15 @@ public interface EmployeeDao {
      * список работников
      * @return
      */
- //   List<EmployeeEntity> list(Map<String, Object> map);
+   List<EmployeeEntity> list(Map<String, Object> map);
 
     /**
-     * найти сотрудника по id
+     * Получить User по идентификатору
+     *
      * @param id
      * @return
      */
-    EmployeeEntity getById(Long id);
-
-    /**
-     * обновить данные сотрудника
-  //   * @param employee
-     */
- //   void update(EmployeeEntity employee);
+    EmployeeEntity getUserById(Long id);
 
     /**
      * добавить сотрудника

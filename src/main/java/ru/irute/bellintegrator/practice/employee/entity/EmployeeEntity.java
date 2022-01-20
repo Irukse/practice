@@ -6,6 +6,11 @@ import ru.irute.bellintegrator.practice.offise.entity.OfficeEntity;
 import ru.irute.bellintegrator.practice.organization.entity.OrganizationEntity;
 
 import javax.persistence.*;
+import java.util.HashSet;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Set;
+
 /**
  * работник
  */
@@ -52,25 +57,18 @@ public class EmployeeEntity {
     private Boolean isIdentified;
 
     /**
-     *
-     */
-    @Column(name = "office_id")
-    private Long officeId;
-
-    /**
      *служебное поле hibernate
      */
     @Version
     private Integer version;
 
     /**
-     * документ, принадлежащий работнику
+     * Идентификатор офиса
      */
-//    @OneToOne(
- //           mappedBy = "employee",
- //           cascade = CascadeType.ALL
- //   )
- //   private DocEmployeeEntity docEmployee;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "office_id")
+    private OfficeEntity officeId;
+
 
 
     /**
@@ -80,6 +78,18 @@ public class EmployeeEntity {
     @JoinColumn(name = "citizenship_id")
     private CountryEntity country;
 
+    /**
+     * Идентификатор документа
+     */
+    // ???
+    @OneToMany(mappedBy = "employee", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List <DocEmployeeEntity> docId = new LinkedList<>();
+
+
+
+    /**
+     *геттеры и сеттеры
+     */
 
     public Long getId() {
         return id;
@@ -88,14 +98,6 @@ public class EmployeeEntity {
     public void setId(Long id) {
         this.id = id;
     }
-
-    public EmployeeEntity() {
-
-    }
-
-    /**
-     *геттеры и сеттеры
-     */
 
     public Integer getVersion() {
         return version;
@@ -154,21 +156,6 @@ public class EmployeeEntity {
         isIdentified = identified;
     }
 
-    public Long getOfficeId() {
-        return officeId;
-    }
-
-    public void setOfficeId(Long officeId) {
-        this.officeId = officeId;
-    }
-
-  //  public DocEmployeeEntity getDocEmployee() {
-  //      return docEmployee;
-  //  }
-
-  //  public void setDocEmployee(DocEmployeeEntity docEmployee) {
-  //     this.docEmployee = docEmployee;
-   // }
     public CountryEntity getCountry() {
         return country;
     }
@@ -177,8 +164,19 @@ public class EmployeeEntity {
         this.country = country;
     }
 
-    public void setCodeCountry (Integer integer){
+    public OfficeEntity getOfficeId() {
+        return officeId;
+    }
+    public void setOfficeId(OfficeEntity officeId) {
+        this.officeId = officeId;
+    }
 
+    public List<DocEmployeeEntity> getDocId() {
+        return docId;
+    }
+
+    public void setDocId(List<DocEmployeeEntity> docId) {
+        this.docId = docId;
     }
 
 }

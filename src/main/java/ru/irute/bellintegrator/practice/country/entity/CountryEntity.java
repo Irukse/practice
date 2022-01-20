@@ -31,24 +31,6 @@ public class CountryEntity {
     @Version
     private Integer version;
 
-  //  @OneToOne(fetch = FetchType.LAZY)
-  //  @JoinColumn(name = "citizenship_id")
-  //  private EmployeeEntity employee;
-
- //   public EmployeeEntity getEmployee() {
-  //      return employee;
-  //  }
-
-  //  public void setEmployee(EmployeeEntity employee) {
-  //      this.employee = employee;
-  //  }
-  @OneToOne (cascade = CascadeType.ALL, orphanRemoval = true)
-  @JoinColumn(name = "citizenship_id")
-  /**
-   * добавим поле Entity
-   */
-    EmployeeEntity employeeEntity;
-
     /**
      *геттеры и сеттеры
      */

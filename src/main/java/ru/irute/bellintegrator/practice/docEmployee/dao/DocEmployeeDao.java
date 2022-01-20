@@ -31,5 +31,12 @@ public interface DocEmployeeDao {
      */
     void updateDocument(DocEmployeeEntity doc);
 
+    /**
+     * Получить список документов по фильтру
+     *
+     * @return
+     */
+    DocEmployeeEntity getDocumentsByFilter(Long id);
+
 
 }

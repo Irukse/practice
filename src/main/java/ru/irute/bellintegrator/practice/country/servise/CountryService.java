@@ -7,7 +7,7 @@ import java.util.List;
 
 public interface CountryService {
     /**
-     * получить список стран
+     * получить список стран Name and code
      */
     List<CountryDto> getList();
 }

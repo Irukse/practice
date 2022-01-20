@@ -66,4 +66,16 @@ public class DocEmployeeDaoImpl implements DocEmployeeDao{
         }
     }
 
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public DocEmployeeEntity getDocumentsByFilter(Long id) {
+        if (id != 0) {
+            return em.find(DocEmployeeEntity.class, id);
+        } else {
+            throw new IllegalArgumentException("Идентификатор документа не может быть равным нулю");
+        }
+    }
+
 }

@@ -4,10 +4,10 @@ import ru.irute.bellintegrator.practice.employee.entity.EmployeeEntity;
 import ru.irute.bellintegrator.practice.typeDocument.entity.TypeDocumentEntity;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotEmpty;
 
 @Entity
 @Table(name = "Doc_employee")
-
 public class DocEmployeeEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -39,6 +39,14 @@ public class DocEmployeeEntity {
     @ManyToOne
     @JoinColumn(name = "emp_id")
     private EmployeeEntity employee;
+
+
+
+    public DocEmployeeEntity(TypeDocumentEntity docType, Long docNumber, String docDate) {
+        this.docType = docType;
+        this.docNumber = docNumber;
+        this.docDate = docDate;
+    }
 
     /**
      *геттеры и сеттеры
