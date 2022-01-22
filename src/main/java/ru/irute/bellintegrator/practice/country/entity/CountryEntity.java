@@ -31,6 +31,14 @@ public class CountryEntity {
     @Version
     private Integer version;
 
+    public CountryEntity(String name, String code) {
+        this.name = name;
+        this.code = code;
+    }
+
+    public CountryEntity() {
+
+    }
     /**
      *геттеры и сеттеры
      */

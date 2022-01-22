@@ -81,7 +81,7 @@ public class EmployeeEntity {
     /**
      * Идентификатор документа
      */
-    // ???
+    //
     @OneToMany(mappedBy = "employee", cascade = CascadeType.ALL, orphanRemoval = true)
     private List <DocEmployeeEntity> docId = new LinkedList<>();
 
@@ -179,4 +179,24 @@ public class EmployeeEntity {
         this.docId = docId;
     }
 
+    public EmployeeEntity(Long id, String firstName,
+                          String secondName, String lastName,
+                          String position, String phone,
+                          Boolean isIdentified, Integer version,
+                          OfficeEntity officeId, CountryEntity country) {
+        this.id = id;
+        this.firstName = firstName;
+        this.secondName = secondName;
+        this.lastName = lastName;
+        this.position = position;
+        this.phone = phone;
+        this.isIdentified = isIdentified;
+        this.version = version;
+        this.officeId = officeId;
+        this.country = country;
+    }
+
+    public EmployeeEntity() {
+
+    }
 }

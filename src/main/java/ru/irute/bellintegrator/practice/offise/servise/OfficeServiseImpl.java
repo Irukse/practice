@@ -20,12 +20,12 @@ import java.util.Objects;
 @Service
 public class OfficeServiseImpl implements OfficeServise{
 
-    private final OfficeDaoImpl officeDao;
-    private final OrganizationDaoImpl organizationDao;
+    private final OfficeDao officeDao;
+    private final OrganizationDao organizationDao;
     private final ModelMapper modelMapper;
 
 
-    public OfficeServiseImpl(OfficeDaoImpl officeDao, OrganizationDaoImpl organizationDao, ModelMapper modelMapper) {
+    public OfficeServiseImpl(OfficeDao officeDao, OrganizationDao organizationDao, ModelMapper modelMapper) {
         this.officeDao = officeDao;
         this.organizationDao = organizationDao;
         this.modelMapper = modelMapper;

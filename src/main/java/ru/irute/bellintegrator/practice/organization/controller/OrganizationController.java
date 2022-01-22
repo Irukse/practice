@@ -10,7 +10,7 @@ import java.util.List;
 import static org.springframework.http.MediaType.APPLICATION_JSON_VALUE;
 
 @RestController
-@RequestMapping(value = "/", produces = APPLICATION_JSON_VALUE)
+@RequestMapping(value = "/org", produces = APPLICATION_JSON_VALUE)
 public class OrganizationController {
     private final OrganizationServiceImpl organizationService;
 

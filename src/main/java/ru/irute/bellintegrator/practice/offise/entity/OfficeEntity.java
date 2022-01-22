@@ -131,4 +131,17 @@ public class OfficeEntity {
 
     }
 
+    public OfficeEntity(Long id, String name, String address, String phone, Boolean isActive, Integer version, OrganizationEntity organization) {
+        this.id = id;
+        this.name = name;
+        this.address = address;
+        this.phone = phone;
+        this.isActive = isActive;
+        this.version = version;
+        this.organization = organization;
+    }
+
+    public OfficeEntity( ) {
+
+    }
 }

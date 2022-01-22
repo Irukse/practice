@@ -1,6 +1,7 @@
 package ru.irute.bellintegrator.practice.organization.entity;
 
 import org.springframework.transaction.annotation.Transactional;
+import ru.irute.bellintegrator.practice.country.entity.CountryEntity;
 import ru.irute.bellintegrator.practice.offise.entity.OfficeEntity;
 
 import javax.persistence.*;
@@ -75,12 +76,6 @@ public class OrganizationEntity {
 
    public List<OfficeEntity> officeEntities;
 
-    /**
-     *конструктор
-     */
-    public OrganizationEntity(){
-
-    }
 
 
     public Long getId() {
@@ -168,8 +163,8 @@ public class OrganizationEntity {
                               String fullName, Integer inn,
                               Integer kpp, String address,
                               String phone, Boolean isActive,
-                              Integer version,
-                              List<OfficeEntity> officeEntities)
+                              Integer version
+                              )
                               {
         this.id = id;
         this.name = name;
@@ -180,8 +175,11 @@ public class OrganizationEntity {
         this.phone = phone;
         this.isActive = isActive;
         this.version = version;
-        this.officeEntities = officeEntities;
+
     }
+
+    public OrganizationEntity()  { }
+
 
     public void addOffice(OfficeEntity officeEntity){
         List <OfficeEntity> list = new LinkedList<>();

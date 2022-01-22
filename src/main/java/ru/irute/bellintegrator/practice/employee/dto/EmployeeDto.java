@@ -46,7 +46,7 @@ public class EmployeeDto {
     public String citizenshipName;
 // код страны берем из Country
     @NotEmpty
-    public Long citizenshipCode;
+    public String citizenshipCode;
 
     @NotNull
     public Boolean isIdentified;
@@ -141,11 +141,11 @@ public class EmployeeDto {
         this.citizenshipName = citizenshipName;
     }
 
-    public Long getCitizenshipCode() {
+    public String getCitizenshipCode() {
         return citizenshipCode;
     }
 
-    public void setCitizenshipCode(Long citizenshipCode) {
+    public void setCitizenshipCode(String citizenshipCode) {
         this.citizenshipCode = citizenshipCode;
     }
 

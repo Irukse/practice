@@ -40,12 +40,15 @@ public class DocEmployeeEntity {
     @JoinColumn(name = "emp_id")
     private EmployeeEntity employee;
 
+    public DocEmployeeEntity() {
 
+    }
 
-    public DocEmployeeEntity(TypeDocumentEntity docType, Long docNumber, String docDate) {
+    public DocEmployeeEntity(EmployeeEntity user, TypeDocumentEntity docType, Long docNumber, String docDate) {
         this.docType = docType;
         this.docNumber = docNumber;
         this.docDate = docDate;
+        this.employee = user;
     }
 
     /**
