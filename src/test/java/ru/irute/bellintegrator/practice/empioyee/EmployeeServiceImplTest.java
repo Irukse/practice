@@ -4,7 +4,6 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -23,7 +22,6 @@ import ru.irute.bellintegrator.practice.offise.entity.OfficeEntity;
 import ru.irute.bellintegrator.practice.organization.entity.OrganizationEntity;
 import ru.irute.bellintegrator.practice.typeDocument.dao.TypeDocumentDao;
 
-import javax.persistence.EntityExistsException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -37,8 +35,8 @@ public class EmployeeServiceImplTest {
 
     private EmployeeEntity user;
     private List<EmployeeEntity> users;
-    private EmployeeDto userListView;
-    private List<EmployeeDto> listViews;
+    private EmployeeDto userListDto;
+    private List<EmployeeDto> listDto;
     private OfficeEntity office;
     private CountryEntity country;
     private OrganizationEntity organization;
@@ -47,13 +45,13 @@ public class EmployeeServiceImplTest {
     @MockBean
     private EmployeeDao userDao;
 
-    @Autowired
+    @MockBean
     private DocEmployeeDao docDao;
 
-    @Autowired
+    @MockBean
     private TypeDocumentDao docTypeDao;
 
-    @Autowired
+    @MockBean
     private OfficeDao officeDao;
 
     @Before
@@ -75,19 +73,19 @@ public class EmployeeServiceImplTest {
         users = new ArrayList<>();
         users.add(user);
 
-        userListView = new EmployeeDto();
+        userListDto = new EmployeeDto();
 
-        userListView.id = 1L;
-        userListView.officeId = office.getId();
-        userListView.firstName = "user";
-        userListView.secondName = "sname";
-        userListView.lastName = "midname";
-        userListView.position = "";
-        userListView.docCode = "21";
-        userListView.citizenshipCode = "643";
+        userListDto.id = 1L;
+        userListDto.officeId = office.getId();
+        userListDto.firstName = "user";
+        userListDto.secondName = "sname";
+        userListDto.lastName = "midname";
+        userListDto.position = "";
+        userListDto.docCode = "21";
+        userListDto.citizenshipCode = "643";
 
-        listViews = new ArrayList<>();
-        listViews.add(userListView);
+        listDto = new ArrayList<>();
+        listDto.add(userListDto);
     }
 
 
@@ -95,6 +93,9 @@ public class EmployeeServiceImplTest {
     public void save() {
         userDao.save(user);
         Assert.assertNotNull(userDao);
+        Assert.assertNotNull(docDao);
+        Assert.assertNotNull(docTypeDao);
+        Assert.assertNotNull(officeDao);
 
     }
 

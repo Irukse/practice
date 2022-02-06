@@ -9,7 +9,7 @@ public interface EmployeeService {
     /**
      *найти работника по id
      */
- //   EmployeeDto getEmployee(Long id);
+    EmployeeDto getEmployeeToId(Long id);
 
     /**
      *список всех работников, отсортированный по офису и т.д.

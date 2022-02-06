@@ -46,10 +46,7 @@ public class OrganizationControllerTest {
 
     @Test
     public void test() {
-  //      Organization (id, name, full_name, inn, kpp,
-        //      address, phone, is_active, version)
-        //      VALUES (1, 'Газпром', 'ООО ГазПромВладивосток', 11112222, 22221111,
-        //      'ул.Циолковского, д.21', '8-921-333-21-13', true, 0 );
+
         OrganizationDto organizationDto = new OrganizationDto();
         organizationDto.setName("Газпром'");
         organizationDto.setFullName("ООО ГазПромВладивосток");

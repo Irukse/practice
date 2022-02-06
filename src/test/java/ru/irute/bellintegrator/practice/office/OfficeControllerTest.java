@@ -44,10 +44,7 @@ public class OfficeControllerTest {
 
         organizationController.save(organizationDto);
 
-    //    INSERT INTO Office (id, org_id, name, address, phone, is_active, version) VALUES
-        //    (1, 1, 'Main office Gazprom', 'ул.Ленина, д.6', '8-925-906-32-12', true, 0 );
         OfficeDto officeDto = new OfficeDto();
-     //   officeDto.setId(1L);
         officeDto.setOrgId(1L);
         officeDto.setName("Main office Gazprom");
         officeDto.setAddress("ул.Циолковского, д.21");

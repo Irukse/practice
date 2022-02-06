@@ -1,5 +1,8 @@
 package ru.irute.bellintegrator.practice.employee.servise;
 
+import ma.glasnost.orika.MapperFacade;
+import ma.glasnost.orika.MapperFactory;
+import ma.glasnost.orika.impl.DefaultMapperFactory;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import ru.irute.bellintegrator.practice.Mapper.ObjectMapperUtils;
@@ -36,6 +39,25 @@ public class EmployeeServiceImpl implements EmployeeService{
         this.countryDao = countryDao;
         this.typeDocumentDao = typeDocumentDao;
         this.docEmployeeDao = docEmployeeDao;
+    }
+
+    @Override
+    public EmployeeDto getEmployeeToId(Long id) {
+
+            EmployeeEntity employeeEntity = employeeDao.getUserById(id);
+            DocEmployeeEntity doc = docEmployeeDao.getDocumentsByFilter(employeeEntity.getId());
+            TypeDocumentEntity docType = doc.getDocType();
+            CountryEntity countryEntity = countryDao.getByCode(employeeEntity.getCountry().getCode());
+
+            EmployeeDto employeeDto = mapUser(employeeEntity);
+            employeeDto.docName = docType.getName();
+            employeeDto.docNumber = doc.getDocNumber();
+            employeeDto.docDate = doc.getDocDate();
+            employeeDto.citizenshipName = countryEntity.getName();
+            employeeDto.citizenshipCode = countryEntity.getCode();
+
+            return employeeDto;
+
     }
 
     @Override
@@ -93,6 +115,16 @@ public class EmployeeServiceImpl implements EmployeeService{
              }
 
         employeeDao.save(user);
+    }
+
+    private EmployeeDto mapUser(EmployeeEntity employeeEntity) {
+        MapperFactory mapperFactory = new DefaultMapperFactory.Builder().mapNulls(false).build();
+        mapperFactory.classMap(EmployeeEntity.class, EmployeeDto.class).exclude("officeId").exclude("docId").mapNulls(false).byDefault().register();
+        MapperFacade mapperFacade = mapperFactory.getMapperFacade();
+
+        EmployeeDto employeeDto = mapperFacade.map(employeeEntity, EmployeeDto.class);
+
+        return employeeDto;
     }
 
 }

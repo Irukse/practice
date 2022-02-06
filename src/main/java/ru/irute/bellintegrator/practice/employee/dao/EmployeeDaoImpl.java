@@ -39,9 +39,9 @@ public class EmployeeDaoImpl implements EmployeeDao{
         CriteriaBuilder builder = em.getCriteriaBuilder();
         CriteriaQuery<EmployeeEntity> criteriaQuery = builder.createQuery(EmployeeEntity.class);
         Root<EmployeeEntity> root = criteriaQuery.from(EmployeeEntity.class);
-        Root<TypeDocumentEntity> rootTypeDoc = criteriaQuery.from(TypeDocumentEntity.class);
+        Root<DocEmployeeEntity> rootDocEmployee = criteriaQuery.from(DocEmployeeEntity.class);
         Root<CountryEntity> rootCountry = criteriaQuery.from(CountryEntity.class);
-        criteriaQuery.multiselect(root, rootTypeDoc, rootCountry);
+        criteriaQuery.multiselect(root, rootDocEmployee, rootCountry);
         List<Predicate> predicates = new LinkedList<>();
 
         if (Objects.nonNull(map.get("officeId"))) {
@@ -65,7 +65,7 @@ public class EmployeeDaoImpl implements EmployeeDao{
         //
         if (Objects.nonNull(map.get("docCode"))) {
 
-           predicates.add(builder.equal(rootTypeDoc.get("code"),
+           predicates.add(builder.equal(rootDocEmployee.get("docType"),
                     map.get("docCode")));
         }
 
