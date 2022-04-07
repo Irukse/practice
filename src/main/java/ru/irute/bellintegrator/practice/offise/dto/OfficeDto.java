@@ -29,15 +29,15 @@ public class OfficeDto {
     private Integer version;
 
     public List<EmployeeEntity> employeeEntities;
-    private OrganizationEntity organization;
+ //   private OrganizationEntity organization;
 
-    public OrganizationEntity getOrganization() {
-        return organization;
-    }
+ // public OrganizationEntity getOrganization() {
+ //       return organization;
+ //  }
 
-    public void setOrganization(OrganizationEntity organization) {
-        this.organization = organization;
-    }
+ //   public void setOrganization(OrganizationEntity organization) {
+  //      this.organization = organization;
+ //   }
 
     public Long getId() {
         return id;

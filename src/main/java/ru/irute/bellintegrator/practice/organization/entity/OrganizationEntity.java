@@ -69,12 +69,12 @@ public class OrganizationEntity {
      * class OfficeEntity через переменную private OrganizationEntity organization in
      * clsaa OfficeEntity;
      */
-   @OneToMany(mappedBy = "organization",cascade = CascadeType.ALL, orphanRemoval = true)
+ //  @OneToMany(mappedBy = "organization",cascade = CascadeType.ALL, orphanRemoval = true)
     /**
      * добавим поле office
      */
 
-   public List<OfficeEntity> officeEntities;
+ //  public List<OfficeEntity> officeEntities;
 
 
 
@@ -147,13 +147,13 @@ public class OrganizationEntity {
         this.version = version;
     }
 
-   public List<OfficeEntity> getOfficeEntities() {
-       return officeEntities;
-   }
+ //  public List<OfficeEntity> getOfficeEntities() {
+ //      return officeEntities;
+ //  }
 
-    public void setOfficeEntities(List<OfficeEntity> officeEntities) {
-        this.officeEntities = officeEntities;
-   }
+ //   public void setOfficeEntities(List<OfficeEntity> officeEntities) {
+  //      this.officeEntities = officeEntities;
+ //  }
 
     public void setIsActive(boolean b) {
     }
@@ -199,7 +199,7 @@ public class OrganizationEntity {
                 ", phone='" + phone + '\'' +
                 ", isActive=" + isActive +
                 ", version=" + version +
-                ", officeEntities=" + officeEntities +
+            //    ", officeEntities=" + officeEntities +
                 '}';
     }
 }

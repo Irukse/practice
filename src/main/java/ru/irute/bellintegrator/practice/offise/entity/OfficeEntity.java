@@ -61,7 +61,7 @@ public class OfficeEntity {
      * создадим связь OneToMany и сопоставим с объектом
      * class EmployeeEntity через переменную private OfficeEntity officeEntity in class EmployeeEntity;
      */
-  //  @OneToMany(mappedBy = "officeEntity",cascade = CascadeType.ALL, orphanRemoval = true)
+  ////  @OneToMany(mappedBy = "officeEntity",cascade = CascadeType.ALL, orphanRemoval = true)
     @OneToMany (cascade = CascadeType.ALL, orphanRemoval = true)
     @JoinColumn(name = "office_id")
     /**
@@ -131,7 +131,10 @@ public class OfficeEntity {
 
     }
 
-    public OfficeEntity(Long id, String name, String address, String phone, Boolean isActive, Integer version, OrganizationEntity organization) {
+    public OfficeEntity(Long id, String name,
+                        String address, String phone,
+                        Boolean isActive, Integer version,
+                        OrganizationEntity organization) {
         this.id = id;
         this.name = name;
         this.address = address;

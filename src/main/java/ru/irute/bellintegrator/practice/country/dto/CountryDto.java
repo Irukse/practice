@@ -1,7 +1,10 @@
 package ru.irute.bellintegrator.practice.country.dto;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
+
 import javax.validation.constraints.Size;
 
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public class CountryDto {
     private Long id;
 

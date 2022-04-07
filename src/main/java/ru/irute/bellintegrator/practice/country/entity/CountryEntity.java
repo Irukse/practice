@@ -5,10 +5,11 @@ import ru.irute.bellintegrator.practice.employee.entity.EmployeeEntity;
 import javax.persistence.*;
 import java.util.List;
 
-@Entity
+@Entity(name = "Country")
 public class CountryEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
     private Long id;
 
 
@@ -16,7 +17,7 @@ public class CountryEntity {
     /**
      *название страны
      */
-    @Column(length = 25,nullable = false)
+    @Column(name = "name_country", length = 25,nullable = false)
     private String name;
 
     /**
@@ -65,5 +66,13 @@ public class CountryEntity {
 
     public void setCode(String code) {
         this.code = code;
+    }
+
+    public Integer getVersion() {
+        return version;
+    }
+
+    public void setVersion(Integer version) {
+        this.version = version;
     }
 }
