@@ -13,6 +13,7 @@ public class DocEmployeeEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+
     /**
      * служебное поле hibernate
      */
@@ -51,17 +52,20 @@ public class DocEmployeeEntity {
         this.employee = user;
     }
 
+
+
     /**
      *геттеры и сеттеры
      */
 
     public Long getId() {
-        return id ;
+        return id;
     }
 
    public void setId(Long id) {
        this.id  = id;
     }
+
 
     public Long getDocNumber() {
         return docNumber;

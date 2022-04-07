@@ -16,9 +16,9 @@ INSERT INTO Employee (id, first_name, second_name, last_name, position, phone, c
 INSERT INTO Employee (id, first_name, second_name, last_name, position, phone, citizenship_id, is_identified, version) VALUES (2, 'Тайсон', 'Фьюри', 'Астапович', 'Security', '89073330909', 2, true, 0 );
 INSERT INTO Employee (id, first_name, second_name, last_name, position, phone, citizenship_id, is_identified, version) VALUES (3, 'Максим', 'Стрыкало', 'Эдуардович', 'DevOps', '89992349022', 1, true, 0 );
 
-INSERT INTO Doc_employee (emp_id, doc_number, doc_date, type_id, version ) VALUES (1, 11111111111, '1995-03-12', 1, 0);
-INSERT INTO Doc_employee (emp_id, doc_number, doc_date, type_id, version) VALUES (2, 22222222222, '2000-09-02', 1, 0);
-INSERT INTO Doc_employee (emp_id, doc_number, doc_date, type_id, version ) VALUES (3, 55555555555, '1998-08-09', 1, 0);
+INSERT INTO Doc_employee ( id, emp_id, doc_number, doc_date, type_id, version ) VALUES (1, 1,  11111111111, '1995-03-12', 1, 0);
+INSERT INTO Doc_employee (id, emp_id, doc_number, doc_date, type_id, version) VALUES (2, 2,  22222222222, '2000-09-02', 1, 0);
+INSERT INTO Doc_employee ( id, emp_id, doc_number, doc_date, type_id, version ) VALUES (3, 3, 55555555555, '1998-08-09', 1, 0);
 
 
 

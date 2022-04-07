@@ -51,7 +51,8 @@ CREATE TABLE IF NOT EXISTS Employee (
 );
 
 CREATE TABLE IF NOT EXISTS Doc_employee (
-    emp_id      BIGINT        NOT NULL PRIMARY KEY AUTO_INCREMENT,
+    id BIGINT        NOT NULL  PRIMARY KEY AUTO_INCREMENT,
+    emp_id      BIGINT        NOT NULL,
     FOREIGN KEY (emp_id)      REFERENCES Employee(id),
     doc_number  VARCHAR (50)  COMMENT 'Номер документа работника',
     doc_date    VARCHAR(50)   COMMENT 'Дата выдачи документа работника',
