@@ -187,4 +187,19 @@ public class OrganizationEntity {
 
     }
 
+    @Override
+    public String toString() {
+        return "OrganizationEntity{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", fullName='" + fullName + '\'' +
+                ", inn=" + inn +
+                ", kpp=" + kpp +
+                ", address='" + address + '\'' +
+                ", phone='" + phone + '\'' +
+                ", isActive=" + isActive +
+                ", version=" + version +
+                ", officeEntities=" + officeEntities +
+                '}';
+    }
 }
