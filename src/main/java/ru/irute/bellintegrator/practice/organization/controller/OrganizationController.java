@@ -1,6 +1,7 @@
 package ru.irute.bellintegrator.practice.organization.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import ru.irute.bellintegrator.practice.organization.dto.OrganizationDto;
 import ru.irute.bellintegrator.practice.organization.servise.OrganizationServiceImpl;
@@ -19,10 +20,10 @@ public class OrganizationController {
         this.organizationService = orgService;
     }
 
-    @PostMapping("/save")
-    public void save(@RequestBody OrganizationDto organizationDto){
-        organizationService.save(organizationDto);
-    }
+   @PostMapping("/save")
+   public void save(@RequestBody OrganizationDto organizationDto){
+       organizationService.save(organizationDto);
+   }
 
     @PostMapping("/update")
     public void update (@RequestBody OrganizationDto organizationDto){
@@ -38,7 +39,5 @@ public class OrganizationController {
     public List<OrganizationDto> getList(@RequestBody OrganizationDto organizationDto){
         return organizationService.getList(organizationDto);
     }
-
-
 
 }

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>organization-save</title>
+</head>
+<body>
+<form action="#" th:action="@{/save}" th:object="${organizationDto}" method="post">
+    <label for="name_org">name_org</label>
+    <input type="text" th:field="*{name_org}" id="name_org" placeholder="name_org">
+    <label for="full_name">full_name</label>
+    <input type="text" th:field="*{full_name}" id="full_name" placeholder="full_name">
+    <label for="inn">inn </label>
+    <input type="text" th:field="*{inn}" id="inn" placeholder="inn">
+    <label for="kpp">kpp </label>
+    <input type="text" th:field="*{kpp}" id="kpp" placeholder="kpp">
+    <label for="kpp">kpp </label>
+    <input type="address " th:field="*{address }" id="address " placeholder="address ">
+    <input type="submit" value="organizationSave">
+</form>
+</body>
+</html>

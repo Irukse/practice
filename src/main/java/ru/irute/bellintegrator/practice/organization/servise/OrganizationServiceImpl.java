@@ -53,9 +53,11 @@ public class OrganizationServiceImpl implements OrganizationService{
 
     @Override
     @Transactional
-    public void update (OrganizationDto orgDto ){
+    public void update (OrganizationDto orgDto){
+        Long idDto = orgDto.getId();
       OrganizationEntity org = modelMapper.map(orgDto , OrganizationEntity.class);
-      Long id = org.getId();
+     // Long id = org.getId();
+        Long id = idDto;
       OrganizationEntity existingOrg= organizationDao.getById(id);
         if (Objects.nonNull(existingOrg)) {
             if (Objects.nonNull(org.getName())) {
