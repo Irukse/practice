@@ -1,15 +1,15 @@
-## Практическое задание в рамках стажировки в компании Bell Integrator
-#### Даны: 
+## Practical assignment as part of the internship at the company Bell Integrator
+#### Given: 
 
-* организации с офисами и сотрудниками
-* справочники с типами документов и кодами стран
+* organizations with offices and employees
+* Directories with document types and country codes
 #### REST архитектура:
-Все описанные возвращаемые типы данных находятся в параметре data.
-Везде, где не написан метод, использовать POST
+All the described return data types are in the data parameter. 
+Wherever the method is not written, use POST
  1. api/organization/list
-In (фильтр):
+In (filter):
 {
-  “name”:””, //обязательный параметр
+  “name”:””, //required parameter
   “inn”:””,
   “isActive”:””
 }
@@ -38,12 +38,12 @@ Out:
 }
 3. api/organization/update
 In: {
-  “id”:””, //обязательный параметр
-  “name”:””, //обязательный параметр
-  “fullName”:””, //обязательный параметр
-  “inn”:””, //обязательный параметр
-  “kpp”:””,  //обязательный параметр
-  “address”:””, //обязательный параметр
+  “id”:””, //required parameter
+  “name”:””, //required parameter
+  “fullName”:””, //required parameter
+  “inn”:””, //required parameter
+  “kpp”:””,  //required parameter
+  “address”:””, //required parameter
   “phone”,””,
   “isActive”:”true”
 }
@@ -57,11 +57,11 @@ Out:
 
 4. api/organization/save
 In: {
-  “name”:””, //обязательный параметр
-  “fullName”:””, //обязательный параметр
-  “inn”:””, //обязательный параметр
-  “kpp”:””, //обязательный параметр
-  “address”:””, //обязательный параметр
+  “name”:””, //required parameter
+  “fullName”:””, //required parameter
+  “inn”:””, //required parameter
+  “kpp”:””, //required parameter
+  “address”:””, //required parameter
   “phone”,””,
   “isActive”:”true”
 }
@@ -72,9 +72,9 @@ Out:
 }
 
 5. api/office/list
-In (фильтр):
+In (filter):
 {
-  “orgId”:””, //обязательный параметр
+  “orgId”:””, //required parameter
   “name”:””,
   “phone”:””,
   “isActive” 
@@ -103,11 +103,11 @@ Out:
 7. api/office/update
 In:
 {
-  “id”:””, //обязательный параметр
-  “name”:””, //обязательный параметр
-  “address”:””, //обязательный параметр
+  “id”:””, //required parameter
+  “name”:””, //required parameter
+  “address”:””, //required parameter
   “phone”,””,
-  “isActive”:”true” //пример
+  “isActive”:”true” //example
 }
 
 Out:
@@ -118,7 +118,7 @@ Out:
 8. api/office/save
 In:
 {
-  “orgId”:””, //обязательный параметр
+  “orgId”:””, //required parameter
   “name”:””,
   “address”:””,
   “phone”,””,
@@ -131,9 +131,9 @@ Out:
 }
 
 9. api/user/list
-In (фильтр):
+In (filter):
 {
-  “officeId”:””, //обязательный параметр
+  “officeId”:””, //required parameter
   “firstName”:””,
   “lastName”:””,
   “middleName”:””,
@@ -171,18 +171,18 @@ Out:
 11. api/user/update
 In:
 {
-  “id”:””, //обязательный параметр
+  “id”:””, //required parameter
   “officeId”:””,
-  “firstName”:””, //обязательный параметр
+  “firstName”:””, //required parameter
   “secondName”:””,
   “middleName”:””,
-  “position”:”” //обязательный параметр
+  “position”:”” //required parameter
   “phone”,””,
   “docName”:””,
   “docNumber”:””,
   “docDate”:””,
   “citizenshipCode”:””,
-  “isIdentified”:”true” //пример
+  “isIdentified”:”true” //example
 }
 
 Out:
@@ -193,37 +193,38 @@ Out:
 12. api/user/save
 In:
 {
-  “officeId”:””, //обязательный параметр
-  “firstName”:””, //обязательный параметр
+  “officeId”:””, //required parameter
+  “firstName”:””, //required parameter
   “secondName”:””,
   “middleName”:””,
-  “position”:”” //обязательный параметр
+  “position”:”” //required parameter
   “phone”,””,
-  “docCode”:””, код документа 35 - права?
-  “docName”:””, Тип документа Type_document 
+  “docCode”:””, code document 35 - passport?
+  “docName”:””, Type_document 
 
-  “docNumber”:””,Номер документа работника.   Doc_employee
+  “docNumber”:””,employees number document.   Doc_employee
 
-  “docDate”:””, Дата выдачи документа работника’. Doc_employee
+  “docDate”:””, Date on which employee documents were issued’.
+   Doc_employee
 
-  “citizenshipCode”:””, гражданство.  country
-  “isIdentified”:”true” //пример
+  “citizenshipCode”:””, citizenship.  country
+  “isIdentified”:”true” //example
 }
-Справочники:
+handbooks:
 api/docs
 [
   {
-    “name”:“Паспорт гражданина РФ”,
+    “name”:“Russian passport”,
     “code”:”21”
   },
   ...
 ]
 
-Виды документов, удостоверяющих личность физического лица
+Types of personal identification documents
 api/countries
 [
   {
-    “name”:“Российская Федерация”,
+    “name”:“Russian”,
     “code”:”643”
   },
   ...
